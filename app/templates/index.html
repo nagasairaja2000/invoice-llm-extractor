@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> Invoice Extractor</title>
+     <link rel="stylesheet" href="/static/css/style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🤖 Invoice Extractor</h1>
+
+    <div class="subtitle">
+
+        Upload your invoice PDF & Extract the details.
+
+    </div>
+
+   <form
+    id="uploadForm"
+    action="/upload"
+    method="post"
+    enctype="multipart/form-data"
+    onsubmit="return false;">
+
+    <div
+        class="upload-card"
+        id="dropArea">
+
+        <input
+            type="file"
+            id="invoice"
+            name="invoices"
+            accept=".pdf"
+            multiple
+            required
+            onchange="showFileName(this)">
+
+        <div class="upload-icon">
+
+            📄
+
+        </div>
+
+        <h2 style="margin-top:10px;color:#1e40af;">
+
+            Drag & Drop Invoice PDFs Here
+
+        </h2>
+
+        <p style="margin-top:15px;">
+
+            OR
+
+        </p>
+
+        <label
+            for="invoice"
+            class="choose-btn">
+
+            Click to Select PDFs
+
+        </label>
+
+        <div id="fileName">
+
+            No files selected
+
+        </div>
+
+    </div>
+
+   <div style="display:flex; gap:15px; margin-top:25px; align-items:flex-start;">
+
+    <div style="flex:1;">
+
+        <button
+            type="button"
+            class="extract-btn"
+            style="margin-top:0;"
+            onclick="submitApproach1()">
+
+            🚀 Extract - Approach 1
+
+        </button>
+
+        <div style="margin-top:8px; text-align:center; font-size:13px; color:#64748b;">
+
+            Gemini Vision · direct PDF upload
+
+        </div>
+
+    </div>
+
+    <div style="flex:1;">
+
+        <button
+            type="button"
+            class="extract-btn"
+            style="margin-top:0; background:#2563eb;"
+            onclick="submitApproach2()">
+
+            📄 Extract - Approach 2
+
+        </button>
+
+        <div style="margin-top:8px; text-align:center; font-size:13px; color:#64748b;">
+
+            PyMuPDF + OCR · local text first
+
+        </div>
+
+    </div>
+
+</div>
+
+</form>
+    <div id="loading">
+
+        ⏳ Extracting invoice details...
+
+        <br><br>
+
+        <span id="loadingStatus">Please wait...</span>
+
+    </div>
+    <div id="resultsContainer"></div>
+
+    <footer>
+
+         Powered by Paynox • Need help? Email us at support@paynox.in
+
+    </footer>
+
+</div>
+<script src="/static/js/app.js"></script>
+</body>
+
+</html>

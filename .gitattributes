@@ -1,0 +1,9 @@
+# Normalise text files to LF so the repository behaves the same on Windows,
+# Linux, and macOS. Binary assets are never converted.
+* text=auto eol=lf
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary

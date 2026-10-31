@@ -1,0 +1,55 @@
+{
+  "invoice": {
+    "supplier_name": "ABC Technologies Pvt Ltd",
+    "supplier_address": "12 MG Road, Bengaluru, Karnataka 560001",
+    "supplier_gstin": "29ABCDE1234F1Z5",
+    "customer_name": "XYZ Retail Solutions",
+    "customer_address": "45 Park Street, Kolkata, West Bengal 700016",
+    "customer_gstin": "19XYZAB5678C1Z2",
+    "invoice_number": "INV-2026-0042",
+    "invoice_date": "2026-04-01",
+    "due_date": "2026-04-30",
+    "currency": "INR",
+    "subtotal": 55000.0,
+    "total_tax": 9900.0,
+    "cgst": 4950.0,
+    "sgst": 4950.0,
+    "igst": null,
+    "invoice_total": 64900.0,
+    "bank_details": "HDFC Bank, A/c 1234567890, IFSC HDFC0001234",
+    "line_items": [
+      {
+        "description": "Cloud Hosting - April 2026",
+        "hsn_sac": "998315",
+        "quantity": 2.0,
+        "unit_price": 15000.0,
+        "tax_percentage": 18.0,
+        "amount": 30000.0
+      },
+      {
+        "description": "Support Services",
+        "hsn_sac": "998313",
+        "quantity": 10.0,
+        "unit_price": 2500.0,
+        "tax_percentage": 18.0,
+        "amount": 25000.0
+      }
+    ],
+    "items_purchased": [
+      "Cloud Hosting - April 2026 (HSN/SAC: 998315, Qty: 2, Unit: 15,000.00, Tax: 18%, Amount: 30,000.00)",
+      "Support Services (HSN/SAC: 998313, Qty: 10, Unit: 2,500.00, Tax: 18%, Amount: 25,000.00)"
+    ]
+  },
+  "pdf_type": "Digital",
+  "approach": "PyMuPDF + Gemini Text",
+  "page_count": 1,
+  "upload_time": null,
+  "text_extraction_time": 0.02,
+  "ocr_time": null,
+  "gemini_time": 4.1,
+  "total_time": 4.2,
+  "input_tokens": 1200,
+  "output_tokens": 320,
+  "total_tokens": 1520,
+  "model": "models/gemini-3.5-flash"
+}
