@@ -68,6 +68,18 @@ def test_docs_and_openapi_are_served(client: TestClient):
     assert schema["info"]["title"] == "Invoice LLM Extractor"
 
 
+def test_ui_assets_are_not_cached(client: TestClient):
+    page = client.get("/")
+    script = client.get("/static/js/app.js")
+
+    assert page.status_code == 200
+    assert script.status_code == 200
+    assert page.headers["cache-control"] == "no-store, max-age=0"
+    assert script.headers["cache-control"] == "no-store, max-age=0"
+    assert "app.js?v=2.0.0" in page.text
+
+
+
 def test_approach_1_upload_creates_completed_job(client: TestClient, digital_pdf: Path):
     response = _upload(client, "/upload", digital_pdf)
 

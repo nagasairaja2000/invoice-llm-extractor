@@ -78,6 +78,19 @@ def create_app(
     app.mount("/static", StaticFiles(directory=str(APP_DIR / "static")), name="static")
     app.include_router(router)
 
+    @app.middleware("http")
+    async def _no_store_for_ui(request: Request, call_next):
+        """Always revalidate the HTML and static assets during development.
+
+        Without this, browsers can keep an older ``app.js`` cached after an
+        upgrade and post to the API with an outdated response contract.
+        """
+        response = await call_next(request)
+        path = request.url.path
+        if path == "/" or path.startswith("/static/"):
+            response.headers["Cache-Control"] = "no-store, max-age=0"
+        return response
+
     @app.exception_handler(AppError)
     async def _app_error_handler(request: Request, exc: AppError) -> JSONResponse:
         logger.warning(
